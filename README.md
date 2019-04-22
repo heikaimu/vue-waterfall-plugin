@@ -1,2 +1,18 @@
-# vue-waterfall-plugin
-vue waterfall(瀑布流插件)，支持Pc， 移动端，无需手工设置高度，超轻量。
+# waterfall
+
+> A Vue.js project
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+```
+
+For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
