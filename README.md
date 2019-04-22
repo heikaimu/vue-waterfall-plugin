@@ -12,7 +12,15 @@ npm i vue-waterfall-plugin -S
 ### 使用
 ```
 import Waterfall from "vue-waterfall-plugin";
-<Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="rgb(73, 74, 95)" @handleClick="handleClick" ref="waterfall">
+<Waterfall 
+  :list="list" 
+  :gutter="10" 
+  :width="240" 
+  :phoneCol="2" 
+  backgroundColor="rgb(73, 74, 95)" 
+  @handleClick="handleClick" 
+  ref="waterfall"
+  >
   <template slot="item" slot-scope="props">
     <div class="card">
       <img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()">
