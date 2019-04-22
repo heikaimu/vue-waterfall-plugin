@@ -1,7 +1,7 @@
 {
-  "name": "vue-simple-waterfall",
+  "name": "vue-waterfall-plugin",
   "description": "a simple vue waterfall plugin for PC and phone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "heikaimu <576079353@qq.com>",
   "license": "MIT",
   "private": false,

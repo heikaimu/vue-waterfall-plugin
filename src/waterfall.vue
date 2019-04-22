@@ -1,5 +1,5 @@
 <template>
-  <div class="grid" ref="grid">
+  <div class="grid" :style="{background: backgroundColor}" ref="grid">
     <div class="grid-item" v-for="(i,index) in list" ref="gridItem" :style="{width: `${itemWidth}px`}" :key="index" @click="handleClick(i)">
       <slot name="item" :data="i" />
     </div>
@@ -26,9 +26,9 @@ export default {
       type: Number,
       default: 2
     },
-    animate: {
+    backgroundColor: {
       type: String,
-      default: "fade"
+      default: "#fff"
     }
   },
   data () {
@@ -72,7 +72,7 @@ export default {
     calculatePosition() {
       this.itemsGutter = [];
       this.itemsPosX = [];
-      const { gutter, itemsGutter, itemsPosX, animate } = this;
+      const { gutter, itemsGutter, itemsPosX } = this;
       const containerEle = this.$refs.grid;
       const itemsNodeList = this.$refs.gridItem;
       containerEle.style.width = "";

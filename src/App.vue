@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" @handleClick="handleClick" ref="waterfall">
+    <Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="#666" @handleClick="handleClick" ref="waterfall">
       <template slot="item" scope="props">
         <div class="card">
           <div class="cover"><img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()"></div>
