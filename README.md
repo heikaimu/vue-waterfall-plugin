@@ -33,8 +33,8 @@ import Waterfall from "vue-waterfall-plugin";
 | Name             | Type    | Default | Description           |
 | ---------------- | ------- | ------- | --------------------- |
 | list             | Array   | []      | 列表数据            |
-| gutter           | Number  | 6       | 卡片预卡片之间的间隙 |
-| width            | Number  | 200     | 卡片在PC上宽度     |
+| gutter           | Number  | 6       | 卡片之间的间隙 |
+| width            | Number  | 200     | 卡片在PC上的宽度     |
 | phoneCol         | Number  | 2       | 当屏幕尺寸低于1200的时候生效。此时width作废。列数由phoneCol决定               |
 | backgroundColor  | String  | #fff    | 背景颜色 |
 
