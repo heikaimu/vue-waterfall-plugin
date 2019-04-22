@@ -1,20 +1,36 @@
-# waterfall
+# Vue 瀑布流组件
 
-> A Vue.js project
+### 这是一款超轻量级的瀑布流组件，无需预设高度，支持PC和移动端。支持图片加载后重新调整顺序。
 
-## Build Setup
+[在线演示地址](https://heikaimu.github.io/waterfall-example/dist/#/)
 
-[在线地址]https://heikaimu.github.io/waterfall-example/dist/#/
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+### 安装
+```
+npm i vue-waterfall-plugin -S
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### 使用
+```
+import Waterfall from "vue-waterfall-plugin";
+<Waterfall :list="list" :gutter="10" :width="240" :phoneCol="2" backgroundColor="rgb(73, 74, 95)" @handleClick="handleClick" ref="waterfall">
+  <template slot="item" slot-scope="props">
+    <div class="card">
+      <img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()">
+    </div>
+  </template>
+</Waterfall>
+```
+
+### 参数
+| Name             | Type    | Default | Description           |
+| ---------------- | ------- | ------- | --------------------- |
+| list             | Array   | []      | 列表数据            |
+| gutter           | Number  | 6       | 卡片预卡片之间的间隙 |
+| width            | Number  | 200     | 卡片在PC上宽度     |
+| phoneCol         | Number  | 2       | 当屏幕尺寸低于1200的时候生效。此时width作废。列数由phoneCol决定               |
+| backgroundColor  | String  | #fff    | 背景颜色 |
+
+### 方法
+| Name             | Description           |
+| ---------------- | --------------------- |
+| handleClick      | 点击事件            |
