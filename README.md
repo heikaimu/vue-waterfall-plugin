@@ -4,6 +4,8 @@
 
 ## Build Setup
 
+[在线地址]https://heikaimu.github.io/waterfall-example/dist/#/
+
 ``` bash
 # install dependencies
 npm install
