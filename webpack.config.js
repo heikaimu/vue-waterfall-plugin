@@ -6,10 +6,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     publicPath: "/dist/",
-    filename: "build.js"
-    // filename: "waterfall.min.js",
-    // library: "Waterfall",
-    // libraryTarget: "umd"
+    // filename: "build.js"
+    filename: "waterfall.min.js",
+    library: "Waterfall",
+    libraryTarget: "umd"
   },
   module: {
     rules: [

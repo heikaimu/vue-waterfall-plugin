@@ -51,7 +51,7 @@ export default {
   },
   mounted() {
     window.onresize = () => {
-      this.screenWidth = document.body.clientWidth;
+      this.screenWidth = document.documentElement.clientWidth;
       // 节流
       if(this.canRun){
         this.canRun = false;
@@ -67,6 +67,7 @@ export default {
   },
   methods: {
     refresh() {
+      this.screenWidth = document.documentElement.clientWidth;
       this.calculatePosition();
     },
     calculatePosition() {
@@ -79,6 +80,7 @@ export default {
 
       if (itemsNodeList) {
         const gridWidth = containerEle.getBoundingClientRect().width;
+        // console.log(gridWidth)
         const gridItemWidth = this.itemWidth + gutter;
         const cols = Math.max(Math.floor((gridWidth - gutter) / gridItemWidth), 1);
         containerEle.style.width = `${cols * gridItemWidth + gutter}px`;
