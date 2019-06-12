@@ -3,6 +3,7 @@
 ### 这是一款超轻量级的瀑布流组件，无需预设高度，支持PC和移动端。支持图片加载后重新调整顺序。
 
 [在线演示地址](https://heikaimu.github.io/waterfall-example/dist/#/)
+
 [例子的代码](https://github.com/heikaimu/waterfall-example)
 
 ### 安装
