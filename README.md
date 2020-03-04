@@ -1,6 +1,6 @@
 # Vue 瀑布流组件
 
-### 这是一款超轻量级的瀑布流组件，无需预设高度，支持PC和移动端。支持图片加载后重新调整顺序。
+### 这是一款超轻量级的瀑布流组件，无需预设高度，支持PC和移动端。
 
 [在线演示地址](https://heikaimu.github.io/vue-waterfall-plugin/dist/index.html#/)
 
@@ -63,8 +63,3 @@ breakpoints: {
   }
 }
 ```
-
-### 方法
-| Name             | Description           |
-| ---------------- | --------------------- |
-| handleClick      | 图片点击事件            |

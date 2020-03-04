@@ -77,6 +77,7 @@
 
 <script>
 import Waterfall from 'vue-waterfall-plugin';
+// import Waterfall from '../plugin/waterfall';
 export default {
   name: 'App',
   components: {
@@ -136,7 +137,7 @@ export default {
       } else {
         this.isOpen = true;
         this.slideWidth = 200;
-        this.gridWidth = this.$el.clientWidth - 200;
+        this.gridWidth = this.$el.clientWidth - 220;
       }
     }
   }
@@ -156,9 +157,14 @@ export default {
   color: #2c3e50;
 }
 .container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   .slider-wrapper {
-    height: 100vh;
+    height: 100%;
     background-color: #111;
     display: flex;
     justify-content: center;
@@ -182,6 +188,8 @@ export default {
 }
 .main-container {
   flex: 1;
+  height: 100%;
+  overflow-y: auto;
   .main-content {
     margin: 0 auto;
     background: #66677c;

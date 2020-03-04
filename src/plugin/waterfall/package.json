@@ -1,6 +1,6 @@
 {
   "name": "vue-waterfall-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a simple vue waterfall plugin for PC and phone",
   "main": "index.js",
   "directories": {

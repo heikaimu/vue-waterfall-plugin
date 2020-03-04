@@ -145,7 +145,9 @@ export default {
   },
   mounted() {
     window.onresize = debounce(() => this.calculatePosition(true), 300);
-    this.calculatePosition();
+    setTimeout(() => {
+      this.calculatePosition();
+    }, 50);
   },
   methods: {
     /**
@@ -166,7 +168,6 @@ export default {
       let doneCount = 0;
       const { gutter, itemsGutter, itemsPosX } = this;
       const itemsNodeList = this.$refs.gridItem;
-
       if (itemsNodeList) {
         for (let i = 0; i < this.rowCount; i++) {
           itemsGutter.push(gutter);
@@ -185,7 +186,7 @@ export default {
             item.style.transition = '0.3s ease-in-out';
             item.style.opacity = 1;
 
-            // 全部完成之后再重制一下位置，解决因动画延迟造成错位的bug
+            // 全部完成之后再重制一下位置，解决错位的bug
             doneCount += 1;
             if (again && doneCount === itemsNodeList.length) {
               setTimeout(() => {
