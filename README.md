@@ -50,7 +50,6 @@ import Waterfall from "vue-waterfall-plugin";
 | gridWidth        | Number  | -1       | 父容器的宽度，当为-1的时候宽度默认为浏览器窗口宽度，可自己设置固定值 |
 | breakpoints      | Object  |breakpoint| 自定义行显示个数，主要用于对移动端的适配 |
 | backgroundColor  | String  | #fff     | 背景颜色 |
-| phoneCol         | -       | -        | 已移除 |
 ```
 breakpoint: {
   1200: { //当屏幕宽度小于等于1200
