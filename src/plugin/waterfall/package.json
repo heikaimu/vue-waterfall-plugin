@@ -1,0 +1,14 @@
+{
+  "name": "vue-waterfall-plugin",
+  "version": "1.0.3",
+  "description": "a simple vue waterfall plugin for PC and phone",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "heikaimu",
+  "license": "ISC"
+}

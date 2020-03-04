@@ -1,12 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <MyExample />
   </div>
 </template>
+
+<script>
+import MyExample from './views/MyExample';
+export default {
+  components: {
+    MyExample
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
