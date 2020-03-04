@@ -2,9 +2,7 @@
 
 ### 这是一款超轻量级的瀑布流组件，无需预设高度，支持PC和移动端。支持图片加载后重新调整顺序。
 
-[在线演示地址](https://heikaimu.github.io/waterfall-example/dist/#/)
-
-[例子的代码](https://github.com/heikaimu/waterfall-example)
+[在线演示地址](https://heikaimu.github.io/vue-waterfall-plugin/dist/index.html#/)
 
 ### 安装
 ```
@@ -18,7 +16,18 @@ import Waterfall from "vue-waterfall-plugin";
   :list="list" 
   :gutter="10" 
   :width="240" 
-  :phoneCol="2" 
+  :gridWidth="gridWidth"
+  :breakpoints="{
+    1200: { //当屏幕宽度小于等于1200
+      rowPerView: 4,
+    },
+    800: { //当屏幕宽度小于等于800
+      rowPerView: 3,
+    },
+    500: { //当屏幕宽度小于等于500
+      rowPerView: 2,
+    }
+  }"
   backgroundColor="rgb(73, 74, 95)" 
   @handleClick="handleClick" 
   ref="waterfall"
@@ -26,21 +35,37 @@ import Waterfall from "vue-waterfall-plugin";
   <template slot="item" slot-scope="props">
     <div class="card">
       <img :src="props.data.src" alt="" @load="$refs.waterfall.refresh()">
+      ...
     </div>
   </template>
 </Waterfall>
 ```
 
 ### 参数
-| Name             | Type    | Default | Description           |
-| ---------------- | ------- | ------- | --------------------- |
-| list             | Array   | []      | 列表数据            |
-| gutter           | Number  | 6       | 卡片之间的间隙 |
-| width            | Number  | 200     | 卡片在PC上的宽度     |
-| phoneCol         | Number  | 2       | 当屏幕尺寸低于1200的时候生效。此时width作废。列数由phoneCol决定               |
-| backgroundColor  | String  | #fff    | 背景颜色 |
+| Name             | Type    | Default  | Description           |
+| ---------------- | ------- | -------- | --------------------- |
+| list             | Array   | []       | 列表数据            |
+| gutter           | Number  | 6        | 卡片之间的间隙 |
+| width            | Number  | 200      | 卡片在PC上的宽度     |
+| gridWidth        | Number  | -1       | 父容器的宽度，当为-1的时候宽度默认为浏览器窗口宽度，可自己设置固定值 |
+| breakpoints      | Object  |breakpoint| 自定义行显示个数，主要用于对移动端的适配 |
+| backgroundColor  | String  | #fff     | 背景颜色 |
+| phoneCol         | -       | -        | 已移除 |
+```
+breakpoint: {
+  1200: { //当屏幕宽度小于等于1200
+    rowPerView: 4,
+  },
+  800: { //当屏幕宽度小于等于800
+    rowPerView: 3,
+  },
+  500: { //当屏幕宽度小于等于500
+    rowPerView: 2,
+  }
+}
+```
 
 ### 方法
 | Name             | Description           |
 | ---------------- | --------------------- |
-| handleClick      | 点击事件            |
+| handleClick      | 图片点击事件            |
