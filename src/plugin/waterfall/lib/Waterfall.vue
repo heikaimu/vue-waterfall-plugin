@@ -10,7 +10,6 @@
       :key="index"
       class="grid-item"
       :style="{width: `${itemWidth}px`}"
-      @click="$emit('handleClick', i)"
     >
       <slot
         name="item"

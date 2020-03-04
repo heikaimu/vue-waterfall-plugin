@@ -37,7 +37,10 @@
             slot-scope="props"
           >
             <div class="card">
-              <div class="cover">
+              <div
+                class="cover"
+                @click="handleClick(props.data)"
+              >
                 <img
                   :src="props.data.src"
                   alt=""
@@ -51,11 +54,11 @@
               <div class="menus">
                 <p
                   data-title="编辑"
-                  @click="handleEdit"
+                  @click="handleEdit(props.data)"
                 />
                 <p
                   data-title="删除"
-                  @click="handleDelete"
+                  @click="handleDelete(props.data)"
                 />
               </div>
             </div>
@@ -107,7 +110,7 @@ export default {
     /**
      * 图片点击
      */
-    handleClick(item) {
+    handleClick() {
       alert('图片点击');
     },
     /**
