@@ -3,6 +3,7 @@
 ### 这是一款超轻量级的瀑布流组件，无需预设高度，支持PC和移动端。
 
 [在线演示地址](https://heikaimu.github.io/vue-waterfall-plugin/dist/index.html#/)
+
 [演示代码地址](https://github.com/heikaimu/vue-waterfall-plugin/blob/master/src/views/MyExample.vue)
 
 ### 安装
@@ -30,7 +31,6 @@ import Waterfall from "vue-waterfall-plugin";
     }
   }"
   backgroundColor="rgb(73, 74, 95)" 
-  @handleClick="handleClick" 
   ref="waterfall"
   >
   <template slot="item" slot-scope="props">
