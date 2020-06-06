@@ -47,7 +47,7 @@ import Waterfall from "vue-waterfall-plugin";
 
 新增参数：animationEffect、animationDuration、animationDelay 动画效果参数
 
-新增返回字段：scope.data.itemWidth（当返回的数据中带有图片的宽高尺寸的时候，可以通过该字段值来预先设置卡片的高度，打到更好的数据视觉效果，详细使用可以看案例代码）
+新增返回字段：scope.data.itemWidth（当列表数据带有图片的宽高尺寸的时候，可以通过该字段值来预先设置卡片的高度，达到更好的数据视觉效果，详细使用可以看案例代码）
 
 ### 参数
 | Name             | Type    | Default   | Description           |
