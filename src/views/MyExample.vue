@@ -1,66 +1,68 @@
 <template>
   <div class="main-container">
     <div class="main-content">
-      <Waterfall
-        ref="waterfall"
-        :list="list"
-        :gutter="10"
-        :width="240"
-        :breakpoints="{
-          1200: { //当屏幕宽度小于等于1200
-            rowPerView: 4,
-          },
-          800: { //当屏幕宽度小于等于800
-            rowPerView: 3,
-          },
-          500: { //当屏幕宽度小于等于500
-            rowPerView: 2,
-          }
-        }"
-        :animationEffect="effect"
-        :animationDuration="`${duration}s`"
-        :animationDelay="`${delay}s`"
-        backgroundColor="rgb(73, 74, 95)"
+      <!-- 滚动加载 -->
+      <div
+        v-infinite-scroll="load"
+        infinite-scroll-disabled="disabled"
       >
-        <template
-          slot="item"
-          slot-scope="props"
+        <Waterfall
+          ref="waterfall"
+          :list="list"
+          :gutter="10"
+          :width="240"
+          :breakpoints="{
+            1200: { //当屏幕宽度小于等于1200
+              rowPerView: 4,
+            },
+            800: { //当屏幕宽度小于等于800
+              rowPerView: 3,
+            },
+            500: { //当屏幕宽度小于等于500
+              rowPerView: 2,
+            }
+          }"
+          :animationEffect="effect"
+          :animationDuration="`${duration}s`"
+          :animationDelay="`${delay}s`"
+          backgroundColor="rgb(73, 74, 95)"
         >
-          <div class="card">
-            <div
-              class="cover"
-              :style="initCardStyle(props)"
-              @click="handleClick(props.data)"
-            >
-              <img
-                :src="props.data.src"
-                alt
-                @load="$refs.waterfall.refresh"
+          <template
+            slot="item"
+            slot-scope="props"
+          >
+            <div class="card">
+              <div
+                class="cover"
+                :style="initCardStyle(props)"
+                @click="handleClick(props.data)"
               >
-            </div>
+                <img
+                  :src="props.data.src"
+                  alt
+                  @load="$refs.waterfall.refresh"
+                >
+              </div>
 
-            <div class="name">
-              <p>height:{{ `${Math.floor(props.data.itemWidth/props.data.width*props.data.height)}px` }}</p>
+              <div class="name">
+                <p>height:{{ `${Math.floor(props.data.itemWidth/props.data.width*props.data.height)}px` }}</p>
+              </div>
+              <div class="menus">
+                <p
+                  data-title="编辑"
+                  @click="handleEdit(props.data)"
+                />
+                <p
+                  data-title="删除"
+                  @click="handleDelete(props.data)"
+                />
+              </div>
             </div>
-            <div class="menus">
-              <p
-                data-title="编辑"
-                @click="handleEdit(props.data)"
-              />
-              <p
-                data-title="删除"
-                @click="handleDelete(props.data)"
-              />
-            </div>
-          </div>
-        </template>
-      </Waterfall>
-      <div class="add-more">
-        <button
-          class="button"
-          @click="addNewList"
-        >Add More</button>
+          </template>
+        </Waterfall>
       </div>
+      <p v-if="loading">加载中...</p>
+      <p v-if="noMore">没有更多了</p>
     </div>
     <div
       class="slide-menu"
@@ -147,8 +149,8 @@
 </template>
 
 <script>
-import Waterfall from 'vue-waterfall-plugin';
-// import Waterfall from '../plugin/waterfall';
+// import Waterfall from 'vue-waterfall-plugin';
+import Waterfall from '../plugin/waterfall';
 export default {
   name: 'App',
   components: {
@@ -235,6 +237,7 @@ export default {
       ],
       colors: ['#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399'],
       list: [],
+      loading: false,
       effect: 'fadeIn',
       duration: 1,
       delay: 0.3,
@@ -262,8 +265,18 @@ export default {
       boxWidth: 'auto'
     };
   },
+  computed: {
+    noMore() {
+      return this.list.length >= 200;
+    },
+    disabled() {
+      return this.loading || this.noMore;
+    }
+  },
   mounted() {
-    this.isSetInitStyle = window.localStorage.getItem('isSetInitStyle') ? JSON.parse(window.localStorage.getItem('isSetInitStyle')) : false;
+    this.isSetInitStyle = window.localStorage.getItem('isSetInitStyle')
+      ? JSON.parse(window.localStorage.getItem('isSetInitStyle'))
+      : false;
 
     this.list = this.images.map((item, index) => {
       return {
@@ -273,14 +286,24 @@ export default {
     });
   },
   methods: {
+    async load() {
+      this.loading = true;
+      await this.addNewList();
+      this.loading = false;
+    },
     addNewList() {
-      const list = this.images.map((item, index) => {
-        return {
-          ...item,
-          blankColor: this.colors[index % this.colors.length]
-        };
+      return new Promise((resolve) => {
+        const list = this.images.map((item, index) => {
+          return {
+            ...item,
+            blankColor: this.colors[index % this.colors.length]
+          };
+        });
+        this.list.push(...list);
+        setTimeout(() => {
+          resolve();
+        }, 3000);
       });
-      this.list.push(...list);
     },
     // 初始化卡片样式
     initCardStyle(props) {
@@ -288,7 +311,7 @@ export default {
         return {
           width: `${props.data.itemWidth - 20}px`,
           height: `${((props.data.itemWidth - 20) / props.data.width) *
-          props.data.height}px`,
+            props.data.height}px`,
           backgroundColor: props.data.blankColor
         };
       }
@@ -345,116 +368,13 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  .slider-wrapper {
-    height: 100%;
-    background-color: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    p {
-      font-size: 30px;
-      color: #fff;
-    }
-    span {
-      display: block;
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      right: -40px;
-      top: 0;
-      z-index: 999999;
-      background-color: red;
-    }
-  }
-}
 .main-container {
   display: flex;
   .main-content {
     flex: 1;
     background: #66677c;
-    .card {
-      background: #fff;
-      border-radius: 5px;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      transition: 0.2s;
-      top: 0;
-      &:hover {
-        top: -3px;
-      }
-      .cover {
-        margin: 10px 10px 0 10px;
-        img {
-          display: block;
-          width: 100%;
-        }
-      }
-      .name {
-        background: #fff;
-        color: #666;
-        font-weight: 600;
-        padding: 10px 20px;
-        font-size: 14px;
-      }
-      .menus {
-        padding: 10px;
-        border-top: 1px solid #e7e7e7;
-        text-align: right;
-        p {
-          position: relative;
-          display: inline-block;
-          padding: 4px 10px;
-          text-decoration: none;
-          text-align: center;
-          cursor: pointer;
-          user-select: none;
-          color: white;
-          font-size: 12px;
-          margin-left: 10px;
-
-          &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            border-radius: 4px;
-            transition: box-shadow 0.5s ease, transform 0.2s ease;
-            will-change: transform;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0))
-              rotateY(var(--ry, 0)) translateZ(var(--tz, -12px));
-          }
-
-          &:hover::before {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-          }
-
-          &::after {
-            position: relative;
-            display: inline-block;
-            content: attr(data-title);
-            transition: transform 0.2s ease;
-            font-weight: bold;
-            letter-spacing: 0.01em;
-            will-change: transform;
-            transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0))
-              rotateY(var(--ry, 0));
-          }
-        }
-      }
-    }
+    height: 100vh;
+    overflow: auto;
   }
   .slide-menu {
     flex: 0 0 200px;
@@ -485,20 +405,79 @@ export default {
     }
   }
 }
-.add-more {
-  padding: 20px;
-  .button {
-    display: block;
-    width: 180px;
-    height: 40px;
-    border-radius: 3px;
-    background: #f2f2f2;
-    border: none;
-    outline: none;
+.card {
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s;
+  top: 0;
+  &:hover {
+    top: -3px;
+  }
+  .cover {
+    margin: 10px 10px 0 10px;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .name {
+    background: #fff;
     color: #666;
-    font-weight: 900;
-    margin: 0 auto;
-    cursor: pointer;
+    font-weight: 600;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .menus {
+    padding: 10px;
+    border-top: 1px solid #e7e7e7;
+    text-align: right;
+    p {
+      position: relative;
+      display: inline-block;
+      padding: 4px 10px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      color: white;
+      font-size: 12px;
+      margin-left: 10px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        border-radius: 4px;
+        transition: box-shadow 0.5s ease, transform 0.2s ease;
+        will-change: transform;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0))
+          rotateY(var(--ry, 0)) translateZ(var(--tz, -12px));
+      }
+
+      &:hover::before {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      &::after {
+        position: relative;
+        display: inline-block;
+        content: attr(data-title);
+        transition: transform 0.2s ease;
+        font-weight: bold;
+        letter-spacing: 0.01em;
+        will-change: transform;
+        transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0))
+          rotateY(var(--ry, 0));
+      }
+    }
   }
 }
 </style>

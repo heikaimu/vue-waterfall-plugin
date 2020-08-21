@@ -1,15 +1,18 @@
+/*
+ * @Description:
+ * @Version: 2.0
+ * @Autor: Yaowen Liu
+ * @Date: 2020-08-21 16:53:14
+ * @LastEditors: Yaowen Liu
+ * @LastEditTime: 2020-08-21 17:51:16
+ */
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import 'element-ui/lib/theme-chalk/index.css';
-import { Select, Option, Switch, InputNumber, Button, Message } from 'element-ui';
+import ElementUI from 'element-ui';
 
-Vue.use(Select);
-Vue.use(Option);
-Vue.use(Switch);
-Vue.use(InputNumber);
-Vue.use(Button);
-Vue.prototype.$message = Message;
+Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 

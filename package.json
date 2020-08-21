@@ -12,7 +12,7 @@
     "element-ui": "^2.13.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
-    "vue-waterfall-plugin": "^1.0.6"
+    "vue-waterfall-plugin": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",
