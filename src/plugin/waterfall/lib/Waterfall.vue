@@ -202,7 +202,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped>
 .grid {
 	margin: 0 auto;
 	position: relative;
