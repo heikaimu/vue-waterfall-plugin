@@ -4,7 +4,7 @@
 
 [在线演示地址](https://heikaimu.github.io/vue-waterfall-plugin/dist/index.html#/)
 
-[演示代码地址](https://github.com/heikaimu/vue-waterfall-plugin/blob/master/src/views/MyExample.vue)
+[演示代码地址（需要安装element-ui）](https://github.com/heikaimu/vue-waterfall-plugin/blob/master/src/views/MyExample.vue)
 
 ### 安装
 ```
