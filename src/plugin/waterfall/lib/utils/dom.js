@@ -19,8 +19,12 @@ export function removeClass(el, className) {
     el.className = newClass.join(' ');
   }
 }
-
-const elementStyle = document.createElement('div').style;
+let elementStyle = null;
+try {
+  elementStyle = document.createElement('div').style;
+} catch (e) {
+  elementStyle = null;
+}
 
 const vendor = (() => {
   const transformNames = {
@@ -30,6 +34,18 @@ const vendor = (() => {
     ms: 'msTransform',
     standard: 'transform'
   };
+
+  if (elementStyle === null) {
+    try {
+      elementStyle = document.createElement('div').style;
+    } catch (e) {
+      elementStyle = null;
+    }
+  }
+
+  if (elementStyle === null) {
+    return elementStyle['standard'];
+  }
 
   for (const key in transformNames) {
     if (elementStyle[transformNames[key]] !== undefined) {
