@@ -150,11 +150,11 @@
 
 <script>
 // import Waterfall from 'vue-waterfall-plugin';
-import { WaterfallNuxt } from '../plugin/waterfall';
+import Waterfall from '../plugin/waterfall';
 export default {
   name: 'App',
   components: {
-    WaterfallNuxt
+    Waterfall
   },
   data() {
     return {
