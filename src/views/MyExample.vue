@@ -6,7 +6,7 @@
         v-infinite-scroll="load"
         infinite-scroll-disabled="disabled"
       >
-        <Waterfall
+        <WaterfallNuxt
           ref="waterfall"
           :list="list"
           :gutter="10"
@@ -59,7 +59,7 @@
               </div>
             </div>
           </template>
-        </Waterfall>
+        </WaterfallNuxt>
       </div>
       <p v-if="loading">加载中...</p>
       <p v-if="noMore">没有更多了</p>
@@ -150,11 +150,11 @@
 
 <script>
 // import Waterfall from 'vue-waterfall-plugin';
-import Waterfall from '../plugin/waterfall';
+import { WaterfallNuxt } from '../plugin/waterfall';
 export default {
   name: 'App',
   components: {
-    Waterfall
+    WaterfallNuxt
   },
   data() {
     return {

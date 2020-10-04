@@ -71,3 +71,61 @@ breakpoints: {
   }
 }
 ```
+
+### SSR(服务端渲染支持)
+支持基于 Nuxt 的服务端渲染（SSR），目的是为了更好的 SEO。
+
+原理为在服务端借助拿到的模板与数据渲染出子元素，等到客户端再计算布局。
+
+要支持 Nuxt 的 SSR，需要将 Waterfall 作为一个插件（plugin）：
+
+```javascript
+// plugins/vue-waterfall.js
+
+import Vue from 'vue'
+import Waterfall from '~/vendors/waterfall/Waterfall';
+
+// 注入到 Vue 中作为全局组件
+Vue.component('Waterfall', Waterfall)
+
+```
+
+并在 `nuxt.config.js` 中注册，此时可以设置 `ssr` 为 true：
+
+````javascript
+// nuxt.config.js
+
+export default {
+  	plugins: [
+      // ...
+      {src: '~/plugins/vue-waterfall.js', ssr: true}
+    ]
+}
+````
+
+之后可以在组件中使用：
+
+```vue
+// your/component.vue
+<template>
+	<Waterfall :list="list" />
+</template>
+
+<script>
+  export default{
+    asyncData(){
+      const data = requestData()
+      // 这样在 SSR 阶段就能渲染列表数据，但是布局计算是在客户端完成的。
+      // 目的是为了 SEO 优化。
+      return {
+        list: data
+      }
+    },
+    data(){
+      return {
+        list: []
+      }
+    }
+  }
+</script>
+```
