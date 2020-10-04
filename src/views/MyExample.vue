@@ -6,7 +6,7 @@
         v-infinite-scroll="load"
         infinite-scroll-disabled="disabled"
       >
-        <WaterfallNuxt
+        <Waterfall
           ref="waterfall"
           :list="list"
           :gutter="10"
@@ -59,7 +59,7 @@
               </div>
             </div>
           </template>
-        </WaterfallNuxt>
+        </Waterfall>
       </div>
       <p v-if="loading">加载中...</p>
       <p v-if="noMore">没有更多了</p>
