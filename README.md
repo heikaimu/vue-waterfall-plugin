@@ -2,6 +2,8 @@
 
 ### 这是一款超轻量级的瀑布流组件，无需预设高度，支持PC和移动端。
 
+[Vue3版本](https://github.com/heikaimu/vue3-waterfall-plugin)
+
 [在线演示地址](https://heikaimu.github.io/vue-waterfall-plugin/dist/index.html#/)
 
 [演示代码地址（需要安装element-ui）](https://github.com/heikaimu/vue-waterfall-plugin/blob/master/src/views/MyExample.vue)
