@@ -9,9 +9,9 @@
 
 # Vue2 瀑布流组件
 
-vue2 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画效果，支持图片懒加载
+vue 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画效果，支持图片懒加载
 
-[在线演示地址](https://vue2-waterfall.netlify.app/)
+[在线演示地址](https://vue-waterfall.netlify.app/)
 
 [vue3 版本](https://github.com/heikaimu/vue3-waterfall-plugin)
 
