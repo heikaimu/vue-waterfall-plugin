@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-24 13:52:49
+ * @LastEditTime: 2022-03-24 14:14:36
 -->
 <template>
   <div class="h-screen flex overflow-hidden">
@@ -189,7 +189,7 @@ export default {
         lazyload: true,
       },
 
-      isOpen: false,
+      isOpen: true,
 
       previewVisible: false,
       previewTitle: '',
