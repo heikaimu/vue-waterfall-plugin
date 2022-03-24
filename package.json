@@ -1,0 +1,51 @@
+{
+  "version": "3.1.0",
+  "name": "vue-waterfall-plugin",
+  "author": "Yaowen Liu <576079353@qq.com>",
+  "license": "UNLICENSED",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/my-lib.umd.js",
+  "module": "./dist/my-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.es.js",
+      "require": "./dist/my-lib.umd.js"
+    },
+    "./style.css": {
+      "import": "./dist/style.css"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:page": "cross-env TARGET=page vite build",
+    "build:npm": "cross-env TARGET=npm vite build",
+    "serve": "vite preview",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.10.0",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23",
+    "vite": "^2.6.4",
+    "vite-plugin-vue2": "^1.9.3",
+    "vitest": "^0.7.10",
+    "vue-template-compiler": "2.6.11"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "element-ui": "^2.15.6",
+    "vue": "2.6.11",
+    "vue-waterfall-plugin": "^3.1.0"
+  },
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/heikaimu/vue-waterfall-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/heikaimu/vue-waterfall-plugin/issues"
+  }
+}
