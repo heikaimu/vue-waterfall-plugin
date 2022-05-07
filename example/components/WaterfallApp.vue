@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-24 14:14:36
+ * @LastEditTime: 2022-05-07 17:46:01
 -->
 <template>
   <div class="h-screen flex overflow-hidden">
@@ -128,9 +128,9 @@
 <script>
 import Github from './Github.vue'
 import ControllerForm from './Form.vue'
-// import { LazyImg, Waterfall } from '../../lib/index'
-import { LazyImg, Waterfall } from 'vue-waterfall-plugin'
-import 'vue-waterfall-plugin/style.css'
+import { LazyImg, Waterfall } from '../../lib/index'
+// import { LazyImg, Waterfall } from 'vue-waterfall-plugin'
+// import 'vue-waterfall-plugin/style.css'
 import loading from '../assets/loading.png'
 import error from '../assets/error.png'
 import { getList } from '../api'

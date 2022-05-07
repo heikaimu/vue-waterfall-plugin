@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-24 13:47:03
+ * @LastEditTime: 2022-05-07 17:45:36
 -->
 
 # Vue2 瀑布流组件
@@ -25,7 +25,7 @@ npm install vue-waterfall-plugin
 
 ```javascript
 import { LazyImg, Waterfall } from 'vue-waterfall-plugin'
-import 'vue-waterfall-plugin/dist/style.css'
+import 'vue-waterfall-plugin/style.css'
 ```
 
 ```html
