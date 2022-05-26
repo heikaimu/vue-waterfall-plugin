@@ -25,7 +25,7 @@ npm install vue-waterfall-plugin
 
 ```javascript
 import { LazyImg, Waterfall } from 'vue-waterfall-plugin'
-import 'vue-waterfall-plugin/style.css'
+import 'vue-waterfall-plugin/dist/style.css'
 ```
 
 ```html
