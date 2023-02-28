@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-28 09:28:31
+ * @LastEditTime: 2023-02-28 09:32:48
 -->
 <template>
   <div class="h-screen flex overflow-hidden">
@@ -26,43 +26,22 @@
         :load-props="options.loadProps"
       >
         <template #item="{ item, url, index }">
-          <div
-            class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group"
-          >
-            <div class="overflow-hidden" @click="handlePreview(item, url)">
-              <LazyImg
-                :url="url"
-                class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105"
-              />
+          <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group">
+            <div class="overflow-hidden">
+              <LazyImg :url="url" class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105" @click="handlePreview(item, url)" />
             </div>
             <div class="px-4 pt-2 pb-4 border-t border-t-gray-800">
-              <h2 class="pb-4 text-gray-50 group-hover:text-yellow-500">{{ item.name }}</h2>
-              <div
-                class="pt-3 flex justify-between items-center border-t border-t-gray-800 border-opacity-50"
-              >
-                <div
-                  class="w-7 h-7 rounded-full flex justify-center items-center cursor-pointer shadow-lg transition-all duration-300 ease-linear"
-                  :class="[item.star ? 'bg-yellow-900 text-yellow-500' : 'bg-gray-800 text-gray-700']"
-                  @click.stop="handleStar(item)"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
+              <h2 class="pb-4 text-gray-50 group-hover:text-yellow-300">
+                {{ item.name }}
+              </h2>
+              <div class="pt-3 flex justify-between items-center border-t border-t-gray-600 border-opacity-50">
+                <div class="text-gray-50" @click.stop="handleStar(item)">
+                  $ {{ item.price }}
                 </div>
                 <div>
-                  <button
-                    class="px-3 h-7 rounded-full bg-red-500 text-sm text-white shadow-lg transition-all duration-300 hover:bg-red-600"
-                    @click.stop="handleDelete(item, index)"
-                  >删除</button>
+                  <button class="px-3 h-7 rounded-full bg-red-500 text-sm text-white shadow-lg transition-all duration-300 hover:bg-red-600" @click.stop="handleDelete(item, index)">
+                    删除
+                  </button>
                 </div>
               </div>
             </div>
