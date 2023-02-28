@@ -4,12 +4,12 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-05-07 17:46:01
+ * @LastEditTime: 2023-02-28 09:28:31
 -->
 <template>
   <div class="h-screen flex overflow-hidden">
     <!-- 左侧列表 -->
-    <div class="flex-auto overflow-y-auto">
+    <div v-loading="loadLoading" class="flex-auto overflow-y-auto">
       <Waterfall
         :list="list"
         :row-key="options.rowKey"
@@ -188,12 +188,13 @@ export default {
         // 是否懒加载
         lazyload: true,
       },
-
       isOpen: true,
-
       previewVisible: false,
       previewTitle: '',
-      previewURL: ''
+      previewURL: '',
+      page: 1,
+      pageSize: 100,
+      loadLoading: false
     }
   },
 
@@ -203,7 +204,15 @@ export default {
 
   methods: {
     handleLoadMore() {
-      this.list.push(...getList(30))
+      this.loadLoading = true
+    getList({
+      page: this.page,
+      pageSize: this.pageSize,
+    }).then((res) => {
+      this.list.push(...res)
+      this.page += 1
+      this.loadLoading = false
+    })
     },
 
     handleToggleController(flag) {
