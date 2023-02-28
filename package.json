@@ -1,22 +1,13 @@
 {
-  "version": "3.1.0",
+  "version": "3.3.0",
   "name": "vue-waterfall-plugin",
   "author": "Yaowen Liu <576079353@qq.com>",
   "license": "UNLICENSED",
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.umd.js",
-  "module": "./dist/my-lib.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/my-lib.es.js",
-      "require": "./dist/my-lib.umd.js"
-    },
-    "./style.css": {
-      "import": "./dist/style.css"
-    }
-  },
+  "main": "dist/my-lib.umd.js",
+  "module": "dist/my-lib.es.js",
   "scripts": {
     "dev": "vite",
     "build:page": "cross-env TARGET=page vite build",
@@ -39,7 +30,7 @@
     "animate.css": "^4.1.1",
     "element-ui": "^2.15.6",
     "vue": "2.6.11",
-    "vue-waterfall-plugin": "^3.1.0"
+    "vue-waterfall-plugin": "^3.3.0"
   },
   "respository": {
     "type": "git",

@@ -4,12 +4,13 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-24 13:31:37
+ * @LastEditTime: 2023-02-28 15:44:03
 -->
 <template>
   <div ref="waterfallWrapper" class="waterfall-list" :style="wrapperStyle">
     <div
       v-for="(item, index) in list"
+      ref="waterfallItem"
       :key="getKey(item, index)"
       class="waterfall-item"
     >
@@ -155,6 +156,18 @@ export default {
   },
 
   watch: {
+    colWidth() {
+      this.$nextTick(() => {
+        this.renderer();
+      })
+    },
+
+    gutter() {
+      this.$nextTick(() => {
+        this.renderer();
+      })
+    },
+
     wrapperWidth() {
       this.renderer();
     },
@@ -188,12 +201,19 @@ export default {
       this.initY()
 
       // 获取节点
-      const items = document.querySelectorAll('.waterfall-item')
-      if (items.length === 0) return false
+      // 使用ref避免多个组件调用时候干扰
+      const refList = this.$refs.waterfallItem
+      if (!refList) {
+        return
+      }
+
+      if (refList.length === 0) {
+        return
+      }
 
       // 遍历节点
-      for (let i = 0; i < items.length; i++) {
-        const curItem = items[i]
+      for (let i = 0; i < refList.length; i++) {
+        const curItem = refList[i]
 
         // curItem.addEventListener('transitionend', handle, false)
         // function handle() {
