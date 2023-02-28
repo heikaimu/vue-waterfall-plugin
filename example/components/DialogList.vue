@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-02-28 09:38:32
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-28 11:15:05
+ * @LastEditTime: 2023-02-28 16:53:10
  * @FilePath: /vue2-waterfall/example/components/DialogList.vue
 -->
 <template>
@@ -41,6 +41,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
