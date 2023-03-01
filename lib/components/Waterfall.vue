@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-28 15:44:03
+ * @LastEditTime: 2023-03-01 09:33:32
 -->
 <template>
   <div ref="waterfallWrapper" class="waterfall-list" :style="wrapperStyle">
@@ -240,7 +240,7 @@ export default {
 
         // 添加入场动画
         this.addAnimation(curItem, () => {
-          if (transition) style[transition] = '.3s'
+          if (transition) style[transition] = 'transform .3s'
         })
       }
 
