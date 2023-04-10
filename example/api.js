@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 13:34:56
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-02-28 09:27:03
+ * @LastEditTime: 2023-04-10 12:49:57
  */
 export function randomID(length = 6) {
   return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36)
@@ -77,7 +77,7 @@ function randomName() {
 // }
 
 
-const website = 'https://makemesurprise.com'
+const website = 'https://www.getphotoblanket.com'
 // const website = 'https://www.getphotoblanket.com';
 
 export const getList = ({ page = 1, pageSize = 20 }) => {
