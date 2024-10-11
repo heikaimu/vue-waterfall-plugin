@@ -240,7 +240,8 @@ export default {
 
         // 添加入场动画
         this.addAnimation(curItem, () => {
-          if (transition) style[transition] = 'transform .3s'
+         const durationSec = `${this.animationDuration / 1000}s`
+          if (transition) style[transition] = `transform ${durationSec}`
         })
       }
 
